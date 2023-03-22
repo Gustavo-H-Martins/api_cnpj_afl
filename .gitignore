@@ -1,0 +1,2 @@
+# ignore os módulos do Node.js
+node_modules

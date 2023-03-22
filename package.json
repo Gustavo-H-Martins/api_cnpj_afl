@@ -1,0 +1,26 @@
+{
+  "name": "api_cnpj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./app/app.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "RESTfull",
+    "Abrasel",
+    "LM Tecnologia"
+  ],
+  "author": "Gustavo Henrique Lopes Martins",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ip": "^1.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21",
+    "sqlite3": "^5.1.6"
+  }
+}
