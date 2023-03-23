@@ -1,7 +1,8 @@
 # API CNPJ
 ### [app.js](./app/app.js)
+Este arquivo é responsável por configurar e iniciar a API.
+* [Documentação](app\swagger\swagger.json)
 
-    Este arquivo é responsável por configurar e iniciar a API.
 ### Requisitos
     Para rodar este aplicativo, você precisa ter os seguintes softwares instalados em seu sistema:
 * Node.js

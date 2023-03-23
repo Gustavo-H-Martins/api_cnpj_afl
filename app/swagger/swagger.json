@@ -1,0 +1,314 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API CNPJ",
+    "description": ""
+  },
+  "host": "gustavo.apidev.com:3030",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/v1/estabelecimentos/all": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/estabelecimentos/cnpj={cnpj}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "cnpj",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "cnpj",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cnpj": {
+                  "example": "any"
+                },
+                "razao_social": {
+                  "example": "any"
+                },
+                "nome_fantasia": {
+                  "example": "any"
+                },
+                "rua": {
+                  "example": "any"
+                },
+                "numero": {
+                  "example": "any"
+                },
+                "complemento": {
+                  "example": "any"
+                },
+                "bairro": {
+                  "example": "any"
+                },
+                "cidade": {
+                  "example": "any"
+                },
+                "estado": {
+                  "example": "any"
+                },
+                "cep": {
+                  "example": "any"
+                },
+                "latitude": {
+                  "example": "any"
+                },
+                "longitude": {
+                  "example": "any"
+                },
+                "telefone1": {
+                  "example": "any"
+                },
+                "site": {
+                  "example": "any"
+                },
+                "cnae_descricao": {
+                  "example": "any"
+                },
+                "horario_funcionamento": {
+                  "example": "any"
+                },
+                "instagram": {
+                  "example": "any"
+                },
+                "facebook": {
+                  "example": "any"
+                },
+                "opcoes_de_servico": {
+                  "example": "any"
+                },
+                "usuario": {
+                  "example": "any"
+                },
+                "chave_acesso": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "cnpj",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "razao_social": {
+                  "example": "any"
+                },
+                "nome_fantasia": {
+                  "example": "any"
+                },
+                "rua": {
+                  "example": "any"
+                },
+                "numero": {
+                  "example": "any"
+                },
+                "complemento": {
+                  "example": "any"
+                },
+                "bairro": {
+                  "example": "any"
+                },
+                "cidade": {
+                  "example": "any"
+                },
+                "estado": {
+                  "example": "any"
+                },
+                "cep": {
+                  "example": "any"
+                },
+                "latitude": {
+                  "example": "any"
+                },
+                "longitude": {
+                  "example": "any"
+                },
+                "telefone1": {
+                  "example": "any"
+                },
+                "site": {
+                  "example": "any"
+                },
+                "cnae_descricao": {
+                  "example": "any"
+                },
+                "horario_funcionamento": {
+                  "example": "any"
+                },
+                "instagram": {
+                  "example": "any"
+                },
+                "facebook": {
+                  "example": "any"
+                },
+                "opcoes_de_servico": {
+                  "example": "any"
+                },
+                "usuario": {
+                  "example": "any"
+                },
+                "chave_acesso": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "cnpj",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "usuario": {
+                  "example": "any"
+                },
+                "chave_acesso": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/estabelecimentos/uf={uf}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "uf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/estabelecimentos/uf={uf}/numero_cnae={numero_cnae}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "uf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "numero_cnae",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
