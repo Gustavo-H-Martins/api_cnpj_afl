@@ -5,7 +5,7 @@ const router = require('express').Router();
 const path = require('path');
 
 router.route('/estabelecimentos/all')
-    .get(function(req, res, next) {
+  .get(function(req, res, next) {
     // definindo encoding da resposta da api
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     const headers = {
@@ -20,30 +20,17 @@ router.route('/estabelecimentos/all')
 
     const query = `SELECT * FROM estabelecimentos;`;
 
-    let finished = false;
-
-    res.write("[")
-    db.each(query, (err, row) => {
+    db.all(query, [], (err, rows) => {
       if (err) {
         console.error(err);
         res.status(500).send({ error: 'Internal Server Error' });
-        finished = true;
         return;
       }
 
-      res.write(JSON.stringify(row) + ',\n');
-
-      if (finished) {
-        return;
-      }
+      res.json(rows);
     });
+  });
 
-    setTimeout(() => {
-      finished = true;
-      res.write("{fim}]");
-      res.end();
-    }, 5000); // O tempo limite aqui (em milissegundos)
-});
 
 
 router.route('/estabelecimentos/cnpj=:cnpj')

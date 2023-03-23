@@ -15,13 +15,7 @@ const estabeleRouter = require('./routes/estabelecimentos');
 */
 // analisa solicitações recebidas com cargas JSON 
 app.use(express.json());
-// Middleware para encerrar a requisição
-app.use((req, res, next) => {
-    res.on('finish', () => {
-      finished = true;
-    });
-    next();
-        })
+
 
 // analisa as solicitações recebidas com cargas úteis codificadas com urlen 
 // extended: true - analisando os dados codificados com URL com a biblioteca querystring 
