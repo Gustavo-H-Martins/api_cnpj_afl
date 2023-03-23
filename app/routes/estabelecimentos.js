@@ -6,17 +6,45 @@ const path = require('path');
 
 router.route('/estabelecimentos/all')
     .get(function(req, res, next) {
-      db.all('SELECT * FROM estabelecimentos', (err, rows) => {
-        if (err) {
-          res.status(500).json({ error: err.message });
-          return;
-        }
-        console.log(`Retornando ${rows.length} dados`)
-        res.json(
-          rows
-        );
-      });
-    })
+    // definindo encoding da resposta da api
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
+    }
+    if (req.method === 'OPTIONS') {
+      res.writeHead(204, headers)
+      res.end()
+      return
+    }
+
+    const query = `SELECT * FROM estabelecimentos;`;
+
+    let finished = false;
+
+    res.write("[")
+    db.each(query, (err, row) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ error: 'Internal Server Error' });
+        finished = true;
+        return;
+      }
+
+      res.write(JSON.stringify(row) + ',\n');
+
+      if (finished) {
+        return;
+      }
+    });
+
+    setTimeout(() => {
+      finished = true;
+      res.write("{fim}]");
+      res.end();
+    }, 5000); // O tempo limite aqui (em milissegundos)
+});
+
 
 router.route('/estabelecimentos/cnpj=:cnpj')
     // Insere dados no banco de dados CNPJ
