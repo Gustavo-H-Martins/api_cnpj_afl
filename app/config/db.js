@@ -1,4 +1,4 @@
-// app/config/db.js
+// app/config/db.js (Camada Config)
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 

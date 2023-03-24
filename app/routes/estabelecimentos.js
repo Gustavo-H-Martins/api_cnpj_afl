@@ -1,5 +1,5 @@
 //app/routes/estabelecimentos.js
-const db = require('./db');
+const db = require('../config/db.js');
 const sqlite3 = require('sqlite3').verbose();
 const router = require('express').Router();
 const path = require('path');
