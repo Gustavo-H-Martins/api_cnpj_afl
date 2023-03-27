@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 const router = require('express').Router();
 const path = require('path');
 
-router.route('/estabelecimentos/all')
+router.route('/estabelecimentos/all/:page/:pageSize')
   .get(function(req, res, next) {
     // definindo encoding da resposta da api
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -18,12 +18,15 @@ router.route('/estabelecimentos/all')
       return
     }
 
-    const query = `SELECT * FROM estabelecimentos;`;
+    const page = parseInt(req.params.page);
+    const pageSize = parseInt(req.params.pageSize);
+    const offset = (page - 1) * pageSize;
+    const query = `SELECT * FROM estabelecimentos LIMIT ? OFFSET ?;`;
 
-    db.all(query, [], (err, rows) => {
+    db.all(query, [pageSize, offset], (err, rows) => {
       if (err) {
         console.error(err);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500).send({ error: 'Erro no servidor interno da api!' });
         return;
       }
 

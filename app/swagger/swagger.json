@@ -2,22 +2,35 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "API CNPJ",
-    "description": ""
+    "title": "ABRASEL REST API",
+    "description": "Esta API REST é utilizada como curador dos dados de AFL da Abrasel em conjunto com os dados públicos da FRB"
   },
-  "host": "gustavo.apidev.com:3030",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http"
+    "http", "https"
   ],
   "paths": {
-    "/api/v1/estabelecimentos/all": {
+    "/api/v1/estabelecimentos/all/{page}/{pageSize}": {
       "get": {
         "description": "",
         "produces": [
           "application/json; charset=utf-8"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -283,7 +296,7 @@
         }
       }
     },
-    "/api/v1/estabelecimentos/uf={uf}/numero_cnae={numero_cnae}": {
+    "/api/v1/estabelecimentos/{uf}/numero_cnae={numero_cnae}": {
       "get": {
         "description": "",
         "parameters": [
