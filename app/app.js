@@ -8,6 +8,7 @@ const app = express();
 
 const PORT = 3030;
 
+
 /**
  * Routes.
  */
@@ -29,11 +30,11 @@ app.use(cors())
 app.use(express.urlencoded({extended: true}));
 
 // analisa as solicitações recebida e passa para o routes estabelecimentos com
-app.use('/api/v1', estabeleRouter);
+app.use('/api/cnpj/v1', estabeleRouter);
 
 // direciona para a página com a documentação da api
 const swaggerFile = require('./swagger/swagger.json');
-app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/api/cnpj/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // starta a api service
 function onStart(){

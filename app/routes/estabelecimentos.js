@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 const router = require('express').Router();
 const path = require('path');
 
-router.route('/estabelecimentos/all/:page/:pageSize')
+router.route('/estabelecimentos')
   .get(function(req, res, next) {
     // definindo encoding da resposta da api
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -18,19 +18,31 @@ router.route('/estabelecimentos/all/:page/:pageSize')
       return
     }
 
-    const page = parseInt(req.params.page);
-    const pageSize = parseInt(req.params.pageSize);
+    const clientIp = req.ip;
+    const uf = req.query.uf ? [req.query.uf.toUpperCase()] : null;
+    const cidade = req.query.cidade ? [req.query.cidade.toUpperCase().replace(/-/g, ' ')] : null;
+    const bairro = req.query.bairro ? [req.query.bairro.toUpperCase().replace(/-/g, ' ')] : null;
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 100;
     const offset = (page - 1) * pageSize;
-    const query = `SELECT * FROM estabelecimentos LIMIT ? OFFSET ?;`;
+    let query = `SELECT * FROM estabelecimentos`;
+    let conditions = [];
+    if (uf) conditions.push(`ESTADO = "${uf}"`);
+    if (cidade) conditions.push(`CIDADE = "${cidade}"`);
+    if (bairro) conditions.push(`BAIRRO = "${bairro}"`);
+    if (conditions.length > 0) query += ` WHERE ${conditions.join(' AND ')}`;
+    query += ` LIMIT ? OFFSET ?;`;
 
     db.all(query, [pageSize, offset], (err, rows) => {
       if (err) {
         console.error(err);
-        res.status(500).send({ error: 'Erro no servidor interno da api!' });
+        res.status(500).send({ error: err.message });
         return;
       }
-
-      res.json(rows);
+      console.log(`Retornando ${rows.length} linhas de dados`)
+      res.status(200).json(
+          rows
+      );
     });
   });
 
