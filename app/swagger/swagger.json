@@ -2,16 +2,16 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "ABRASEL REST API",
-    "description": "Esta API REST é utilizada como curador dos dados de AFL da Abrasel em conjunto com os dados públicos da FRB"
+    "title": "LEADS CNPJ",
+    "description": ""
   },
-  "host": "localhost:3000",
+  "host": "apicnpjafl.gustavo-h-marti.repl.co/",
   "basePath": "/",
   "schemes": [
-    "http", "https"
+    "https"
   ],
   "paths": {
-    "/api/v1/estabelecimentos/all/{page}/{pageSize}": {
+    "/api/cnpj/v1/estabelecimentos": {
       "get": {
         "description": "",
         "produces": [
@@ -19,15 +19,28 @@
         ],
         "parameters": [
           {
+            "name": "uf",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "cidade",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "bairro",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "page",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "type": "string"
           },
           {
             "name": "pageSize",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "type": "string"
           }
         ],
@@ -41,7 +54,7 @@
         }
       }
     },
-    "/api/v1/estabelecimentos/cnpj={cnpj}": {
+    "/api/cnpj/v1/estabelecimentos/cnpj={cnpj}": {
       "get": {
         "description": "",
         "parameters": [
@@ -275,7 +288,7 @@
         }
       }
     },
-    "/api/v1/estabelecimentos/uf={uf}": {
+    "/api/cnpj/v1/estabelecimentos/uf={uf}": {
       "get": {
         "description": "",
         "parameters": [
@@ -296,7 +309,7 @@
         }
       }
     },
-    "/api/v1/estabelecimentos/{uf}/numero_cnae={numero_cnae}": {
+    "/api/cnpj/v1/estabelecimentos/uf=uf}/numero_cnae{=numero_cnae}": {
       "get": {
         "description": "",
         "parameters": [
